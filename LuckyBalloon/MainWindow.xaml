@@ -1,0 +1,115 @@
+﻿<Window x:Class="LuckyBalloon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LuckyBalloon"
+        mc:Ignorable="d"
+        Title="Lucky Balloon" Height="720" Width="960" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Grid x:Name="grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="320"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Border BorderBrush="SteelBlue" BorderThickness="2" Margin="5">
+            <Grid>
+                <Canvas x:Name="playground" SizeChanged="playground_SizeChanged" MouseMove="playground_MouseMove">
+                    <Canvas.Background>
+                        <ImageBrush ImageSource="files/background-image.jpg"/>
+                    </Canvas.Background>
+                </Canvas>
+                <Grid x:Name="gameTitleBox" Height="135" Width="598" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,242,10,298">
+                    <TextBlock x:Name="gameTitle1_Copy" HorizontalAlignment="Left" Height="125" Margin="-5,10,0,0" TextWrapping="Wrap" Text="Lucky Ball" VerticalAlignment="Top" Width="422" Style="{DynamicResource GameTitle}" FontSize="72">
+                        <TextBlock.Effect>
+                            <DropShadowEffect/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <Rectangle HorizontalAlignment="Left" Height="80.25" Margin="417,26.5,0,0" VerticalAlignment="Top" Width="59.5" RenderTransformOrigin="0.375,0.425">
+                        <Rectangle.Fill>
+                            <ImageBrush
+                                    ImageSource="files/balloon5.png"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock x:Name="gameTitle2_Copy" HorizontalAlignment="Left" Height="80.25" Margin="547.5,10,0,0" TextWrapping="Wrap" Text="N" VerticalAlignment="Top" Width="50.5" Style="{DynamicResource GameTitle}" FontSize="72">
+                        <TextBlock.Effect>
+                            <DropShadowEffect/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <Rectangle HorizontalAlignment="Left" Height="80.25" Margin="481.5,26.5,0,0" VerticalAlignment="Top" Width="59.5" RenderTransformOrigin="0.375,0.425">
+                        <Rectangle.Fill>
+                            <ImageBrush
+                                    ImageSource="files/balloon5.png"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Grid>
+                <TextBlock x:Name="gameStatus" HorizontalAlignment="Center" Height="125" Margin="10,296,10,254" TextWrapping="Wrap" VerticalAlignment="Center" Width="598" FontSize="48" TextAlignment="Center" FontWeight="Bold" Style="{DynamicResource GameTitle}" d:IsHidden="True">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Grid>
+        </Border>
+        <Border Grid.Column="1" BorderBrush="SteelBlue" BorderThickness="2" Margin="5">
+            <Grid>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF8CFFFF" Offset="0"/>
+                        <GradientStop Color="#FF54FF8B" Offset="1"/>
+                        <GradientStop Color="#FF6EF39B" Offset="0.9"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Button x:Name="startGameBtn" Content="Start" HorizontalAlignment="Left" Height="47.485" Margin="10,617.515,0,0" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Top" Width="286" Click="startGameBtn_Click" FontSize="24" FontWeight="Bold"/>
+                <Grid x:Name="gameBoard" HorizontalAlignment="Left" Height="591" Margin="10,10,0,0" VerticalAlignment="Top" Width="286">
+                    <Grid x:Name="balloonsStatus" HorizontalAlignment="Left" Height="94" Margin="0,125,-11,0" VerticalAlignment="Top" Width="297">
+                        <ProgressBar x:Name="scoreProgressBar" HorizontalAlignment="Left" Height="22" Margin="61,60,0,0" VerticalAlignment="Top" Width="205" Maximum="25"/>
+                        <Rectangle HorizontalAlignment="Left" Height="40" Margin="-5,45,0,0" VerticalAlignment="Top" Width="34">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="files/balloon1.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Label x:Name="maxScore" Content="25" HorizontalAlignment="Left" Height="24" Margin="266,58,0,0" VerticalAlignment="Top" Width="26" RenderTransformOrigin="0.385,0.167" FontWeight="Bold"/>
+                        <Label x:Name="currentScore" Content="0" HorizontalAlignment="Left" Height="24" Margin="34,58,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="0.385,0.167" FontWeight="Bold"/>
+                        <Label Content="Popped balloons not having a bomb" HorizontalAlignment="Left" Height="31" Margin="-5,4,0,0" VerticalAlignment="Top" Width="287" FontSize="14" FontWeight="Bold"/>
+                    </Grid>
+                    <Grid x:Name="titleBox" HorizontalAlignment="Left" Height="60" Margin="0,10,-11,0" VerticalAlignment="Top" Width="297">
+                        <TextBlock x:Name="gameTitle1" HorizontalAlignment="Left" Height="40" Margin="-5,10,0,0" TextWrapping="Wrap" Text="Lucky Ball" VerticalAlignment="Top" Width="234" Style="{DynamicResource GameTitle}">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <Rectangle HorizontalAlignment="Left" Height="40" Margin="203,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="0.375,0.425">
+                            <Rectangle.Fill>
+                                <ImageBrush
+                    ImageSource="files/balloon5.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle HorizontalAlignment="Left" Height="40" Margin="234,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="0.375,0.425">
+                            <Rectangle.Fill>
+                                <ImageBrush
+                                    ImageSource="files/balloon5.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <TextBlock x:Name="gameTitle2" HorizontalAlignment="Left" Height="40" Margin="265,10,0,0" TextWrapping="Wrap" Text="N" VerticalAlignment="Top" Width="27" Style="{DynamicResource GameTitle}">
+                            <TextBlock.Effect>
+                                <DropShadowEffect/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                    </Grid>
+                    <Grid x:Name="bombsStatus" HorizontalAlignment="Left" Height="114" Margin="0,254,0,0" VerticalAlignment="Top" Width="286">
+                        <Rectangle HorizontalAlignment="Left" Height="58" VerticalAlignment="Center" Width="55" RenderTransformOrigin="0.815,0.5" Margin="-10,10,0,0">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="files/blast.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <ProgressBar x:Name="bombProgressBar" Height="22" Margin="60,51,21,0" VerticalAlignment="Top" Maximum="9" Foreground="Red"/>
+                        <Label x:Name="maxBombs" Content="10" HorizontalAlignment="Left" Height="24" Margin="265,51,-5,0" VerticalAlignment="Top" Width="26" RenderTransformOrigin="0.385,0.167" FontWeight="Bold"/>
+                        <Label x:Name="bombCount" Content="0" HorizontalAlignment="Left" Height="24" Margin="35,51,0,0" VerticalAlignment="Top" Width="25" RenderTransformOrigin="0.385,0.167" FontWeight="Bold"/>
+                        <Label Content="Popped balloons with a bomb inside" HorizontalAlignment="Left" Height="31" Margin="-1,2,0,0" VerticalAlignment="Top" Width="287" FontSize="14" FontWeight="Bold"/>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
