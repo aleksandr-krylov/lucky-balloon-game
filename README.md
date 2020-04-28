@@ -2,8 +2,8 @@
 
 A simple game using wpf and c#
 
-![game start]("starter_screen.jpg")
+![game start]("/game_screenshots/starter_screen.jpg")
 
-![game in progress]("game_in_progress.jpg")
+![game in progress]("/game_screenshots/game_in_progress.jpg")
 
-![game finished]("game_is_over.jpg")
+![game finished]("/game_screenshots/game_is_over.jpg")
